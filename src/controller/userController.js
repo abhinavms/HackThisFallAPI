@@ -3,7 +3,22 @@ const User = require('../model/User');
 const userCollection = require('../app').collection("Users");
 
 exports.check = async (req, res) => {
-    res.json({"status" : "Not Implemented"});
+    const user = req.query.user;
+    await userCollection.findOne({_id: user}, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else {
+            if (result) {
+                res.status(200).send({
+                    "Status" : "User exists", 
+                    "Result" : result
+                });
+            } else {
+                res.status(200).send({"Status" : "User does not exist"});
+            }
+        }
+    });
 };
 
 exports.register = async (req, res) => {

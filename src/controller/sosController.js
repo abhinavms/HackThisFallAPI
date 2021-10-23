@@ -17,7 +17,7 @@ exports.sendSOS = async (req, res) => {
         contacts.forEach(async contact => {
         client.messages
             .create({
-                body: ${message}! SOS! ${user.firstname} is requesting help at coordinates: https://www.google.com/maps/search/?api=1&query=${lat},${long},
+                body: `${message}! SOS! ${user.firstname} is requesting help at coordinates: https://www.google.com/maps/search/?api=1&query=${lat},${long}`,
                from: '+12058469725',
                to: "+91" + contact.phoneno,
              })

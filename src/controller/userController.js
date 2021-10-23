@@ -10,11 +10,11 @@ exports.check = async (req, res) => {
         } else {
             if (result) {
                 res.status(200).send({
-                    "Status" : "User exists", 
-                    "Result" : result
+                    "status" : "User exists", 
+                    "result" : result
                 });
             } else {
-                res.status(200).send({"Status" : "User does not exist"});
+                res.status(200).send({"status" : "User does not exist"});
             }
         }
     });

@@ -11,14 +11,19 @@ exports.fakeCall = async (req, res) => {
         client.calls.create({
          url: 'http://demo.twilio.com/docs/voice.xml',
          to: "+91" + user._id,
-         from: '+12058469725'
+         from: twilio.phone
        })
       .then(call => {
-          console.log(call);
-          res.status(200).send("Fake Call sent");
+          console.log({
+            sid : call.sid,            
+            to : call.to,
+            from : call.from,
+            status : call.status,
+          });
+          res.status(200).json({"status" : "Fake Call sent"});
         });
     }
     else {
-        res.status(400).send("User not found");
+        res.status(400).json({"status" : "User not found"});
     }
 }

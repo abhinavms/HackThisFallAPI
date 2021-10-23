@@ -9,15 +9,15 @@ exports.sendSOS = async (req, res) => {
     console.log(id + " " + lat + " " + long + " " + message);
 
     const user = await userCollection.findOne({_id: id});
-    
+
     if (user) {
         contacts = user.contacts;
         contacts.forEach(async contact => {
             console.log("Sending SOS to " , contact.name, " at ", contact.phoneno);
         });
-        res.status(200).send("SOS sent");
+        res.status(200).json({"status" : "SOS sent"});
     }
     else {
-        res.status(400).send("User not found");
+        res.status(400).json({"status" :"User not found"});
     }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "hackthisfall",
+  "name": "hackthisfallapi",
   "version": "1.0.0",
   "description": "API for Hack This Fall",
   "main": "src/app.js",

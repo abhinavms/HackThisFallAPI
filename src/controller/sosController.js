@@ -1,4 +1,6 @@
 const userCollection = require('../app').collection("Users");
+const twilio = require('../config').twilio;
+const client = require('twilio')(twilio.accountSid, twilio.authToken);
 
 exports.sendSOS = async (req, res) => {
     const id = req.body.user;
@@ -13,6 +15,13 @@ exports.sendSOS = async (req, res) => {
     if (user) {
         contacts = user.contacts;
         contacts.forEach(async contact => {
+        client.messages
+            .create({
+               body: `SOS! ${user.firstname} is requesting help at Co-ordinates: ${lat}, ${long}`,
+               from: '+12058469725',
+               to: "+91" + contact.phoneno,
+             })
+             .then(message => console.log(message.sid));
             console.log("Sending SOS to " , contact.name, " at ", contact.phoneno);
         });
         res.status(200).json({"status" : "SOS sent"});

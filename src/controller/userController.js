@@ -28,7 +28,7 @@ exports.register = async (req, res) => {
         if (err) {
             res.status(500).json({"status" : "Error"});
         } else {
-            res.json({"status" : "User Created"});
+            res.json({"status" : "User Created", "result" : user});
         }
     });
 };

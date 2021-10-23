@@ -1,6 +1,6 @@
 class Contact {
     constructor(phoneno, name, email, relationship) {
-        this._id = phoneno;
+        this.phoneno = phoneno;
         this.name = name;
         this.email = email;
         this.relationship = relationship;

@@ -9,10 +9,11 @@ exports.sendSOS = async (req, res) => {
     console.log(id + " " + lat + " " + long + " " + message);
 
     const user = await userCollection.findOne({_id: id});
+    
     if (user) {
         contacts = user.contacts;
         contacts.forEach(async contact => {
-            console.log("Sending SOS to " , contact.name, " at ", contact._id);
+            console.log("Sending SOS to " , contact.name, " at ", contact.phoneno);
         });
         res.status(200).send("SOS sent");
     }

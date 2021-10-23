@@ -1,4 +1,3 @@
-const config = require('../config');
 const User = require('../model/User');
 const userCollection = require('../app').collection("Users");
 
